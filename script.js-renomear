@@ -1,0 +1,42 @@
+// Alerta de boas-vindas ao carregar a página
+window.addEventListener('load', function() {
+    alert('Bem-vindo ao site de receitas de salgados! 😋');
+  });
+  
+  // Destacar o link de navegação ao clicar
+  document.querySelectorAll("nav a").forEach(link => {
+    link.addEventListener("click", function() {
+      document.querySelectorAll("nav a").forEach(l => l.classList.remove("ativo"));
+      this.classList.add("ativo");
+    });
+  });
+  
+  // Criar botão "voltar ao topo" dinamicamente
+  const botaoTopo = document.createElement("button");
+  botaoTopo.textContent = "↑ Topo";
+  botaoTopo.style.position = "fixed";
+  botaoTopo.style.bottom = "20px";
+  botaoTopo.style.right = "20px";
+  botaoTopo.style.padding = "10px";
+  botaoTopo.style.borderRadius = "5px";
+  botaoTopo.style.backgroundColor = "#ffa500";
+  botaoTopo.style.color = "#fff";
+  botaoTopo.style.border = "none";
+  botaoTopo.style.cursor = "pointer";
+  botaoTopo.style.display = "none";
+  botaoTopo.style.zIndex = "1000";
+  document.body.appendChild(botaoTopo);
+  
+  // Mostrar botão quando rolar a página
+  window.addEventListener("scroll", function() {
+    if (window.scrollY > 300) {
+      botaoTopo.style.display = "block";
+    } else {
+      botaoTopo.style.display = "none";
+    }
+  });
+  
+  // Scroll suave para o topo
+  botaoTopo.addEventListener("click", function() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
